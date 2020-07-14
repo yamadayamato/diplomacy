@@ -54,7 +54,7 @@ class NamedCoastMapDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.NamedCoastMapData
         fields = (
-            'pk',
+            'id',
             'named_coast',
             'name',
             'abbreviation',
@@ -87,7 +87,7 @@ class TerritoryMapDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.TerritoryMapData
         fields = (
-            'pk',
+            'id',
             'territory',
             'type',
             'name',
