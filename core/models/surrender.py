@@ -1,10 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from core.models.base import PerTurnModel, SurrenderStatus
+from core.models.base import SurrenderStatus
 
 
-class Surrender(PerTurnModel):
+class Surrender(models.Model):
     """
     Represent a game participant's decision to surrender from the game. After
     the participant has decided to surrender, they have until the end of the
@@ -12,7 +12,13 @@ class Surrender(PerTurnModel):
     """
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='surrenders',
+    )
+    nation_state = models.ForeignKey(
+        'NationState',
+        on_delete=models.CASCADE,
+        related_name='surrenders',
     )
     status = models.CharField(
         max_length=20,
